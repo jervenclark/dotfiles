@@ -1,0 +1,17 @@
+---
+# Provision
+
+- name: provision manjaro/i3 workstation
+  hosts: manjaro
+  connection: local
+
+  vars:
+    symlink: &symlink_options
+      state: link
+      force: true
+      owner: "{{ host_username }}"
+      group: "{{ host_username }}"
+
+  roles:
+    - base
+    - development

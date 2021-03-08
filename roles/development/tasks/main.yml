@@ -1,0 +1,43 @@
+- name: Install development packages
+  community.general.pacman:
+    name:
+      - base-devel
+      - emacs
+    state: present
+  become: true
+
+- name: Check if emacs directory exists
+  stat:
+    path: /home/{{ host_username }}/.emacs.d
+  register: emacs_dir
+
+# - name: Remove directory emacs directory
+#   file:
+#     path: "/home/{{ host_username }}/.emacs.d"
+#     state: absent
+
+- name: Clone emacs
+  git:
+    repo: git@github.com:syl20bnr/spacemacs.git
+    version: develop
+    dest: "/home/{{ host_username }}/.emacs.d"
+    accept_hostkey: true
+  when: ! emacs_dir.stat.exists != true
+
+- name: Update emacs
+  git:
+    repo: git@github.com:syl20bnr/spacemacs.git
+    version: develop
+    dest: "/home/{{ host_username }}/.emacs.d"
+    accept_hostkey: true
+    update: true
+  when: ! emacs_dir.stat.exists
+
+
+- name: Copy spacemacs 
+  copy:
+    src: "../files/spacemacs"
+    dest: "/home/{{ host_username }}/.spacemacs"
+    follow: true
+  # when: ! emacs_dir.stat.exists != true
+

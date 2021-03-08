@@ -1,0 +1,8 @@
+!! Xresources
+
+#include ".Xresources.d/fonts.conf"
+#include ".Xresources.d/xterm.conf"
+!! #include ".cache/wal/colors.Xresources"
+#include ".Xresources.d/colors.conf"
+#include ".Xresources.d/urxvt.conf"
+!! #include ".Xoverrides"

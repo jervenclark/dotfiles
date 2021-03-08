@@ -1,0 +1,40 @@
+- name: Remove bloat packages
+  community.general.pacman:
+    name:
+      - palemoon-bin
+    state: absent
+  become: true
+
+- name: Install common packages
+  community.general.pacman:
+    name:
+      - bat
+      - brave
+      - rofi
+      - rofi-calc
+      - zsh
+      - python-pip
+    state: present
+  become: true
+
+- name: change user shell to zsh
+  become: yes
+  user:
+    name: "{{ host_username }}"
+    shell: /usr/bin/zsh
+
+- name: Symlink Xresources
+  file: &symlink_options
+    state: link
+    force: true
+    owner: "{{ host_username }}"
+    group: "{{ host_username }}"
+    src: "{{ role_path }}/files/Xresources"
+    dest: $HOME/.Xresources
+
+- name: Symlink Xresources.d
+  file:
+    <<: *symlink_options
+    src: "{{ role_path }}/files/configs"
+    dest: $HOME/.Xresources.d
+

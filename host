@@ -1,0 +1,5 @@
+[manjaro]
+127.0.0.1
+
+[manjaro:vars]
+host_username=jervenclark
