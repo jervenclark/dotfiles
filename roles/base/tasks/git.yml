@@ -1,6 +1,6 @@
 ---
-# title           : i3.yml
-# description     : Task manifest for provisioning i3wm
+# title           : git.yml
+# description     : Task manifest for provisioning git
 # author		      : Jerven Clark Chua
 # email           : jervenclark@gmail.com
 # date created    : 2021-03-09
@@ -9,11 +9,11 @@
 # ansible_version : 2.10.6
 
 
-- name: Symlink i3wm config file
+- name: Symlink git config file
   file:
     state: link
     force: true
     owner: "{{ host_username }}"
     group: "{{ host_username }}"
-    src: "{{ role_path }}/files/i3/config"
-    dest: $HOME/.i3/config
+    src: "{{ role_path }}/files/git/gitconfig"
+    dest: $HOME/.gitconfig

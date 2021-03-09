@@ -1,0 +1,13 @@
+[user]
+	email       = jervenclark@gmail.com
+	name        = Jerven Clark Chua
+[pull]
+	ff          = only
+[core]
+	pager       = diff-so-fancy | less --tabs=4 -RFX
+	editor      = emacsclient -a emacs
+	autocrlf    = false
+	eol         = LF
+	fileMode    = false
+[diff]
+	renamelimit = 5000
