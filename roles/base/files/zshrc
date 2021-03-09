@@ -45,6 +45,7 @@ ZSH_CUSTOM=$HOME/.ohmyzsh/custom
 plugins=(
     git
     archlinux
+    jech
     zsh-autosuggestions
 )
 

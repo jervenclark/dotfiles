@@ -54,6 +54,13 @@
   when: ! omz_dir.stat.exists != true
 
 
+- name: Symlink zsh custom scritps
+  file:
+    <<: *symlink_options
+    src: "{{ role_path }}/files/zsh"
+    dest: $HOME/.ohmyzsh/custom/plugins/private
+
+
 
 #===============================================================================
 # Setup Fonts
