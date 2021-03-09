@@ -1,0 +1,19 @@
+---
+# title           : rofi.yml
+# description     : Task manifest for provisioning rofi
+# author		      : Jerven Clark Chua
+# email           : jervenclark@gmail.com
+# date created    : 2021-03-09
+# date modified   : 2021-03-09
+# version         : 0.0.1
+# ansible_version : 2.10.6
+
+
+- name: Symlink rofi config
+  file:
+    state: link
+    force: true
+    owner: "{{ host_username }}"
+    group: "{{ host_username }}"
+    src: "{{ role_path }}/files/rofi"
+    dest: $HOME/.config/rofi

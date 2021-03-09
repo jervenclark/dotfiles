@@ -1,0 +1,99 @@
+*[ i3 Global ]*
+$mod+Shift+c reload
+$mod+Shift+r restart
+$mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
+$mod+0 mode "$mode_system"
+$mod+r mode "resize"
+$mod+9 exec --no-startup-id blurlock
+$mod+m bar mode toggle
+$mod+Shift+g mode "$mode_gaps"
+$mod+Shift+minus move scratchpad
+$mod+minus scratchpad show
+
+*[ Applications ]*
+$mod+Return exec terminal
+$mod+d exec --no-startup-id rofi -show run
+$mod+t exec --no-startup-id pkill compton
+$mod+z exec --no-startup-id morc_menu
+$mod+F2 exec --no-startup-id emacs
+$mod+F3 exec --no-startup-id brave
+$mod+F4 exec --no-startup-id calibre
+$mod+F6 exec --no-startup-id pcmanfm
+$mod+Ctrl+b exec terminal -e 'bmenu'
+$mod+Ctrl+m exec terminal -e 'alsamixer'
+$mod+Ctrl+p exec pavucontrol
+$mod+Ctrl+t exec --no-startup-id compton -b
+$mod+Ctrl+x --release exec --no-startup-id xkill
+$mod+F5 exec terminal -e 'mocp'
+$mod+Shift+d --release exec "killall dunst; exec notify-send 'restart dunst'"
+$mod+Shift+h exec xdg-open /usr/share/doc/manjaro/i3_help.pdf
+$mod+Shift+F3 exec pcmanfm_pkexec
+Mod1+F1 exec --no-startup-id /home/jervenclark/Projects/dotfiles/config/zsh/custom/scripts/i3aliases.sh
+
+*[ Window Management ]*
+$mod+u border none
+$mod+y border pixel 1
+$mod+n border normal
+$mod+Shift+q kill
+$mod+j focus left
+$mod+k focus down
+$mod+l focus up
+$mod+semicolon focus right
+$mod+Left focus left
+$mod+Down focus down
+$mod+Up focus up
+$mod+Right focus right
+$mod+Shift+j move left
+$mod+Shift+k move down
+$mod+Shift+l move up
+$mod+Shift+semicolon move right
+$mod+Shift+Left move left
+$mod+Shift+Down move down
+$mod+Shift+Up move up
+$mod+Shift+Right move right
+$mod+h split h;exec notify-send 'tile horizontally'
+$mod+v split v;exec notify-send 'tile vertically'
+$mod+q split toggle
+$mod+f fullscreen toggle
+$mod+s layout stacking
+$mod+w layout tabbed
+$mod+e layout toggle split
+$mod+Shift+space floating toggle
+$mod+space focus mode_toggle
+$mod+Shift+s sticky toggle
+$mod+a focus parent
+
+*[ Screenshots ]*
+Print exec --no-startup-id flameshot gui -p /home/jervenclark/Pictures/Screenshots
+$mod+Print --release exec --no-startup-id i3-scrot -w
+$mod+Shift+Print --release exec --no-startup-id i3-scrot -s
+
+*[ Workspace Navigation ]*
+$mod+1 workspace $ws1
+$mod+2 workspace $ws2
+$mod+3 workspace $ws3
+$mod+4 workspace $ws4
+$mod+5 workspace $ws5
+$mod+6 workspace $ws6
+$mod+7 workspace $ws7
+$mod+8 workspace $ws8
+$mod+Ctrl+1 move container to workspace $ws1
+$mod+Ctrl+2 move container to workspace $ws2
+$mod+Ctrl+3 move container to workspace $ws3
+$mod+Ctrl+4 move container to workspace $ws4
+$mod+Ctrl+5 move container to workspace $ws5
+$mod+Ctrl+6 move container to workspace $ws6
+$mod+Ctrl+7 move container to workspace $ws7
+$mod+Ctrl+8 move container to workspace $ws8
+$mod+Shift+1 move container to workspace $ws1; workspace $ws1
+$mod+Shift+2 move container to workspace $ws2; workspace $ws2
+$mod+Shift+3 move container to workspace $ws3; workspace $ws3
+$mod+Shift+4 move container to workspace $ws4; workspace $ws4
+$mod+Shift+5 move container to workspace $ws5; workspace $ws5
+$mod+Shift+6 move container to workspace $ws6; workspace $ws6
+$mod+Shift+7 move container to workspace $ws7; workspace $ws7
+$mod+Shift+8 move container to workspace $ws8; workspace $ws8
+$mod+b workspace back_and_forth
+$mod+Shift+b move container to workspace back_and_forth; workspace back_and_forth
+$mod+Ctrl+Right workspace next
+$mod+Ctrl+Left workspace prev

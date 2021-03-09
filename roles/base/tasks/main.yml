@@ -15,6 +15,9 @@
 - name: Re/De/Install Packages
   include_tasks: packages.yml
 
+- name: Configure i3wm
+  include_tasks: i3.yml
+  
 - name: Configure ZSH
   include_tasks: zsh.yml
 
