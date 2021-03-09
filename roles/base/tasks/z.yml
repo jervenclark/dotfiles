@@ -1,0 +1,26 @@
+---
+# title           : z.yml
+# description     : Task manifest for provision z
+# author		      : Jerven Clark Chua
+# email           : jervenclark@gmail.com
+# date created    : 2021-03-09
+# date modified   : 2021-03-09
+# version         : 0.0.1
+# ansible_version : 2.10.6
+
+
+#===============================================================================
+# Setup z jump-around utility
+#===============================================================================
+- name: Check if z directory exists
+  stat:
+    path: $HOME/.z-jumparound
+  register: z_dir
+
+- name: Clone z
+  git:
+    repo: git@github.com:rupa/z.git
+    version: master
+    dest: $HOME/.z-jumparound
+    accept_hostkey: true
+  when: ! z_dir.stat.exists != true

@@ -32,4 +32,7 @@
 
 - name: Configure rofi
   include_tasks: rofi.yml
+
+- name: Configure z
+  include_tasks: z.yml
 ...

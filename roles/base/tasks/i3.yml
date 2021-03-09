@@ -17,3 +17,24 @@
     group: "{{ host_username }}"
     src: "{{ role_path }}/files/i3/config"
     dest: $HOME/.i3/config
+
+- name: Set wallpaper via nitrogen
+  ansible.builtin.command:
+    argv:
+      - /usr/bin/nitrogen
+      - "--set-centered"
+      - "{{ wallpaper_dir }}/{{ desktop_wallpaper }}"
+
+- name: Create screenshot directory
+  ansible.builtin.file:
+    path: $HOME/Prictures/Screenshots
+    state: directory
+    mode: '0755'
+
+- name: Symlink zone info
+  file:
+    <<: *symlink_options
+    src: "{{ role_path }}/files/zoneinfo/Asia/Manila"
+    dest: /usr/share/zoneinfo/Asia/Manila
+    become: true
+

@@ -39,13 +39,13 @@ export ZSH=$HOME/.ohmyzsh
 CASE_SENSITIVE="true"
 DISABLE_AUTO_UPDATE="true"
 DISABLE_UNTRACKED_FILES_DIRTY="true"
-ZSH_CUSTOM=$DOTFILES_DIR/config/zsh/custom
+ZSH_CUSTOM=$HOME/.ohmyzsh/custom
 
 # define zsh plugins
 plugins=(
     git
     archlinux
-    # zsh-autosuggestions
+    zsh-autosuggestions
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -62,7 +62,7 @@ PATH=$DOTFILES_DIR/config/zsh/custom/scripts:$PATH
 #-------------------------------------------------------------------------------
 # Setup Z jump around
 #-------------------------------------------------------------------------------
-# source $HOME/Projects/dotfiles/modules/z/z.sh
+source $HOME/.z-jumparound/z.sh
 
 
 #-------------------------------------------------------------------------------
@@ -75,8 +75,6 @@ fi
 source $HOME/.ohmyzsh/custom/themes/powerlevel10k/powerlevel10k.zsh-theme
 # load p10k theme
 [[ ! -f $HOME/.p10k.zsh ]] || source $HOME/.p10k.zsh
-# powerline-daemon -q
-# . /usr/share/powerline/bindings/zsh/powerline.zsh
 
 
 #-------------------------------------------------------------------------------
@@ -115,6 +113,3 @@ source /usr/share/doc/pkgfile/command-not-found.zsh
 # Reset terminal
 #-------------------------------------------------------------------------------
 ttyctl -f
-
-# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh

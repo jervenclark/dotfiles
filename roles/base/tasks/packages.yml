@@ -26,8 +26,10 @@
   community.general.pacman:
     name:
       - bat
+      - bmon
       - brave
       - bzip2
+      - calibre
       - curl
       - diff-so-fancy
       - exa
@@ -36,9 +38,12 @@
       - libffi
       - llvm
       - net-tools
+      - nitrogen
       - nnn
+      - pavucontrol
       - pkgfile
       - polybar
+      - pulseaudio
       - pv
       - python-pip
       - rofi
@@ -48,6 +53,7 @@
       - tldr
       - trash-cli
       - unzip
+      - vlc
       - xclip
       - xz
       - yay

@@ -13,6 +13,10 @@
   hosts: manjaro
   connection: local
 
+  vars:
+    wallpaper_dir: "{{ playbook_dir }}/roles/base/files/wallpapers"
+    desktop_wallpaper: "3508x2480-alien-vs-predator.png"
+
   roles:
     - base
     # - development

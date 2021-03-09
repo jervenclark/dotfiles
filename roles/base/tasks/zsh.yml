@@ -40,6 +40,20 @@
     src: "{{ role_path }}/files/zshrc"
     dest: $HOME/.zshrc
 
+- name: Check if omz-autosuggestions directory exists
+  stat:
+    path: $HOME/.ohmyzsh/custom/plugins/zsh-autosuggestions
+  register: omz_dir
+
+- name: Clone omz-autosuggestions
+  git:
+    repo: git@github.com:zsh-users/zsh-autosuggestions.git
+    version: master
+    dest: $HOME/.ohmyzsh/custom/plugins/zsh-autosuggestions
+    accept_hostkey: true
+  when: ! omz_dir.stat.exists != true
+
+
 
 #===============================================================================
 # Setup Fonts
