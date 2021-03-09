@@ -1,0 +1,25 @@
+---
+# title           : p10k.yml
+# description     : Task manifest for provision powerlevel10k
+# author		      : Jerven Clark Chua
+# email           : jervenclark@gmail.com
+# date created    : 2021-03-09
+# date modified   : 2021-03-09
+# version         : 0.0.1
+# ansible_version : 2.10.6
+
+
+- name: Check if p10k directory exists
+  stat:
+    path: $HOME/.ohmyzsh/custom/themes/powerlevel10k
+  register: p10k_dir
+
+- name: Clone powerline10k
+  git:
+    repo: git@github.com:romkatv/powerlevel10k.git
+    version: master
+    dest: $HOME/.ohmyzsh/custom/themes/powerlevel10k
+    accept_hostkey: true
+  when: ! p10k_dir.stat.exists != true
+
+...

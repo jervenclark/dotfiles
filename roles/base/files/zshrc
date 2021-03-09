@@ -1,0 +1,120 @@
+#!/bin/zsh
+# title           : .zshrc
+# description     : Main zsh configuration file
+# author		      : Jerven Clark Chua
+# email           : jervenclark@gmail.com
+# date            : 2020-07-17
+# version         : 0.0.1
+# usage		        : source .zshrc
+# notes           :
+# zsh_version     : 5.8
+#===============================================================================
+
+
+#-------------------------------------------------------------------------------
+# Fix for tramp not being able to parse PS1
+#-------------------------------------------------------------------------------
+[[ $TERM == "dumb" ]] && unsetopt zle && PS1='$ ' && return
+
+
+#-------------------------------------------------------------------------------
+# Environment variables
+#-------------------------------------------------------------------------------
+export PATH=$HOME/bin:/usr/local/bin:/$HOME/.config/composer/vendor/bin:/$HOME/Projects/dotfiles/modules/flutter/bin:$PATH
+export PROJECTS_DIR="${HOME}/Projects"
+export DOTFILES_DIR="${PROJECTS_DIR}/dotfiles"
+
+# export JAVA_OPTS='-XX:+IgnoreUnrecognizedVMOptions --add-modules java.se.ee'
+export ANDROID_HOME=/opt/android-sdk
+#setenv ANDROID_SWT /usr/share/java
+export PATH=$PATH:$ANDROID_HOME/tools:$ANDROID_HOME/tools/bin
+
+
+#-------------------------------------------------------------------------------
+# Setup ZSH + Oh My ZSH
+#-------------------------------------------------------------------------------
+export ZSH=$HOME/.ohmyzsh
+
+# configure zsh
+CASE_SENSITIVE="true"
+DISABLE_AUTO_UPDATE="true"
+DISABLE_UNTRACKED_FILES_DIRTY="true"
+ZSH_CUSTOM=$DOTFILES_DIR/config/zsh/custom
+
+# define zsh plugins
+plugins=(
+    git
+    archlinux
+    # zsh-autosuggestions
+)
+
+source $ZSH/oh-my-zsh.sh
+
+# append to Path
+PATH=$DOTFILES_DIR/config/zsh/custom/scripts:$PATH
+
+#-------------------------------------------------------------------------------
+# Load pywal theme on start
+#-------------------------------------------------------------------------------
+# /bin/cat ~/.cache/wal/sequences
+# . $HOME/.cache/wal/colors-tty.sh
+
+#-------------------------------------------------------------------------------
+# Setup Z jump around
+#-------------------------------------------------------------------------------
+# source $HOME/Projects/dotfiles/modules/z/z.sh
+
+
+#-------------------------------------------------------------------------------
+# Setup powerlevel10k theme
+#-------------------------------------------------------------------------------
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]];
+then
+    source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
+source $HOME/.ohmyzsh/custom/themes/powerlevel10k/powerlevel10k.zsh-theme
+# load p10k theme
+[[ ! -f $HOME/.p10k.zsh ]] || source $HOME/.p10k.zsh
+# powerline-daemon -q
+# . /usr/share/powerline/bindings/zsh/powerline.zsh
+
+
+#-------------------------------------------------------------------------------
+# Setup ssh-agent
+#-------------------------------------------------------------------------------
+# Start ssh agent
+eval "$(ssh-agent -s)" > /dev/null 2>&1
+
+
+#-------------------------------------------------------------------------------
+# Setup nvm
+#-------------------------------------------------------------------------------
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && source $NVM_DIR/nvm.sh
+
+
+#-------------------------------------------------------------------------------
+# Search pkgfile database for missing commands
+#-------------------------------------------------------------------------------
+source /usr/share/doc/pkgfile/command-not-found.zsh
+
+
+#-------------------------------------------------------------------------------
+# Setup resh - Rich Enhanced Shell History
+#-------------------------------------------------------------------------------
+[ -f ~/.resh/shellrc ] && source ~/.resh/shellrc
+
+
+#-------------------------------------------------------------------------------
+# Setup virtualenvwrapper.sh
+#-------------------------------------------------------------------------------
+# source virtualenvwrapper.sh
+
+
+#-------------------------------------------------------------------------------
+# Reset terminal
+#-------------------------------------------------------------------------------
+ttyctl -f
+
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh

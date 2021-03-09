@@ -1,0 +1,57 @@
+---
+# title           : zsh.yml
+# description     : Task manifest for provision zsh
+# author		      : Jerven Clark Chua
+# email           : jervenclark@gmail.com
+# date created    : 2021-03-09
+# date modified   : 2021-03-09
+# version         : 0.0.1
+# ansible_version : 2.10.6
+
+
+#===============================================================================
+# Setup zsh + oh-my-zsh
+#===============================================================================
+- name: change user shell to zsh
+  become: yes
+  user:
+    name: "{{ host_username }}"
+    shell: /usr/bin/zsh
+
+- name: Check if omz directory exists
+  stat:
+    path: $HOME/.ohmyzsh
+  register: omz_dir
+
+- name: Clone oh-my-zsh
+  git:
+    repo: git@github.com:ohmyzsh/ohmyzsh.git
+    version: master
+    dest: $HOME/.ohmyzsh
+    accept_hostkey: true
+  when: ! omz_dir.stat.exists != true
+
+- name: Symlink zsh config
+  file: &symlink_options
+    state: link
+    force: true
+    owner: "{{ host_username }}"
+    group: "{{ host_username }}"
+    src: "{{ role_path }}/files/zshrc"
+    dest: $HOME/.zshrc
+
+
+#===============================================================================
+# Setup Fonts
+#===============================================================================
+- name: Symlink fonts directory
+  file:
+    <<: *symlink_options
+    src: "{{ role_path }}/files/fonts"
+    dest: $HOME/.fonts
+  become: true
+
+- name: Clear font cache
+  ansible.builtin.shell: fc-cache -fv
+
+...

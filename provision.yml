@@ -1,17 +1,20 @@
 ---
-# Provision
+# title           : provision.yml
+# description     : Main provision
+# author		      : Jerven Clark Chua
+# email           : jervenclark@gmail.com
+# date created    : 2020-07-17
+# date modified   : 2021-03-09
+# version         : 0.0.1
+# ansible_version : 2.10.6
+
 
 - name: provision manjaro/i3 workstation
   hosts: manjaro
   connection: local
 
-  vars:
-    symlink: &symlink_options
-      state: link
-      force: true
-      owner: "{{ host_username }}"
-      group: "{{ host_username }}"
-
   roles:
     - base
-    - development
+    # - development
+
+...

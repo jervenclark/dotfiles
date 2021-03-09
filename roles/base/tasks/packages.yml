@@ -1,0 +1,60 @@
+---
+# title           : packages.yml
+# description     : Task manifest for provision base packages
+# author		      : Jerven Clark Chua
+# email           : jervenclark@gmail.com
+# date created    : 2021-03-09
+# date modified   : 2021-03-09
+# version         : 0.0.1
+# ansible_version : 2.10.6
+
+
+- name: Full system upgrade
+  pacman:
+    update_cache: true
+  become: true
+
+- name: Remove bloat packages
+  community.general.pacman:
+    name:
+      - palemoon-bin
+      - deluge
+    state: absent
+  become: true
+
+- name: Install common packages
+  community.general.pacman:
+    name:
+      - bat
+      - brave
+      - bzip2
+      - curl
+      - diff-so-fancy
+      - exa
+      - flameshot
+      - git
+      - libffi
+      - llvm
+      - net-tools
+      - nnn
+      - pkgfile
+      - polybar
+      - pv
+      - python-pip
+      - rofi
+      - rofi-calc
+      - texlive-most
+      - tk
+      - tldr
+      - trash-cli
+      - unzip
+      - xclip
+      - xz
+      - yay
+      - zip
+      - zlib
+      - zsh
+    state: present
+  become: true
+
+...

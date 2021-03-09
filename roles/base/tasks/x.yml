@@ -1,0 +1,30 @@
+---
+# title           : x.yml
+# description     : Task manifest for provisioning X, Xresources
+# author		      : Jerven Clark Chua
+# email           : jervenclark@gmail.com
+# date created    : 2021-03-08
+# date modified   : 2021-03-09
+# version         : 0.0.1
+# ansible_version : 2.10.6
+
+
+#===============================================================================
+# Setup Xresources
+#===============================================================================
+- name: Symlink Xresources
+  file: &symlink_options
+    state: link
+    force: true
+    owner: "{{ host_username }}"
+    group: "{{ host_username }}"
+    src: "{{ role_path }}/files/Xresources"
+    dest: $HOME/.Xresources
+
+- name: Symlink Xresources.d
+  file:
+    <<: *symlink_options
+    src: "{{ role_path }}/files/xconfigs"
+    dest: $HOME/.Xresources.d
+
+...

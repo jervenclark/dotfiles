@@ -11,11 +11,6 @@
     path: /home/{{ host_username }}/.emacs.d
   register: emacs_dir
 
-# - name: Remove directory emacs directory
-#   file:
-#     path: "/home/{{ host_username }}/.emacs.d"
-#     state: absent
-
 - name: Clone emacs
   git:
     repo: git@github.com:syl20bnr/spacemacs.git
