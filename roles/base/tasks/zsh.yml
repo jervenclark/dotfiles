@@ -58,7 +58,7 @@
   file:
     <<: *symlink_options
     src: "{{ role_path }}/files/zsh"
-    dest: $HOME/.ohmyzsh/custom/plugins/private
+    dest: $HOME/.ohmyzsh/custom/plugins/jech
 
 
 
@@ -68,8 +68,8 @@
 - name: Symlink fonts directory
   file:
     <<: *symlink_options
-    src: "{{ role_path }}/files/fonts"
-    dest: $HOME/.fonts
+    src: "{{ role_path }}/files/fonts/MesloLGS NF"
+    dest: "/home/{{ host_username }}/.fonts"
   become: true
 
 - name: Clear font cache

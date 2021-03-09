@@ -22,4 +22,13 @@
     accept_hostkey: true
   when: ! p10k_dir.stat.exists != true
 
+- name: Symlink p10k config file
+  file: &symlink_options
+    state: link
+    force: true
+    owner: "{{ host_username }}"
+    group: "{{ host_username }}"
+    src: "{{ role_path }}/files/p10k.zsh"
+    dest: $HOME/.p10k.zsh
+
 ...

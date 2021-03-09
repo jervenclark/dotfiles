@@ -15,10 +15,7 @@
 DOTFILES_DIR=`dirname $(realpath $0)`
 
 # update python, pip
-yes | sudo pacman -Sy \
-             ansible \
-             python \
-             python-pip
+yes | sudo pacman -Sy ansible python python-pip
 
 # install aur ansible module
 ansible-galaxy install kewlfft.aur

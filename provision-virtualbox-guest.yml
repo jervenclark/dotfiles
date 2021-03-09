@@ -1,0 +1,19 @@
+---
+# title           : provision-virtualbox-guest.yml
+# description     : Provision virtualbox guest
+# author		      : Jerven Clark Chua
+# email           : jervenclark@gmail.com
+# date created    : 2020-07-17
+# date modified   : 2021-03-09
+# version         : 0.0.1
+# ansible_version : 2.10.6
+
+
+- name: provision manjaro/i3 workstation
+  hosts: manjaro
+  connection: local
+
+  roles:
+    - virtualbox
+
+...

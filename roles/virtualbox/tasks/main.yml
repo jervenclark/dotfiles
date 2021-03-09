@@ -1,0 +1,17 @@
+---
+# title           : packages.yml
+# description     : Task manifest for provisioning development packages
+# author		      : Jerven Clark Chua
+# email           : jervenclark@gmail.com
+# date created    : 2021-03-09
+# date modified   : 2021-03-09
+# version         : 0.0.1
+# ansible_version : 2.10.6
+
+
+- name: Install development packages
+  community.general.pacman:
+    name:
+      - virtualbox-guest-utils
+    state: present
+  become: true
