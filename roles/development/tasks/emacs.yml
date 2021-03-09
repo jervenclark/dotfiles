@@ -1,0 +1,48 @@
+---
+# title           : emacs.yml
+# description     : Task manifest for provision emacs
+# author		      : Jerven Clark Chua
+# email           : jervenclark@gmail.com
+# date created    : 2021-03-09
+# date modified   : 2021-03-09
+# version         : 0.0.1
+# ansible_version : 2.10.6
+
+
+- name: Check if emacs directory exists
+  stat:
+    path: /home/{{ host_username }}/.emacs.d
+  register: emacs_dir
+
+- name: Clone emacs
+  git:
+    repo: git@github.com:syl20bnr/spacemacs.git
+    version: develop
+    dest: "/home/{{ host_username }}/.emacs.d"
+    accept_hostkey: true
+  when: ! emacs_dir.stat.exists != true
+
+- name: Update emacs
+  git:
+    repo: git@github.com:syl20bnr/spacemacs.git
+    version: develop
+    dest: "/home/{{ host_username }}/.emacs.d"
+    accept_hostkey: true
+    update: true
+  when: ! emacs_dir.stat.exists
+
+- name: Copy spacemacs 
+  file: &symlink_options
+    state: link
+    force: true
+    owner: "{{ host_username }}"
+    group: "{{ host_username }}"
+    src: "{{ role_path }}/files/spacemacs"
+    dest: "/home/{{ host_username }}/.spacemacs"
+
+- name: Copy spacemacs keybinds
+  file:
+    <<: *symlink_options
+    src: "{{ role_path }}/files/spacemacs-layers/keybinds"
+    dest: $HOME/.emacs.d/private/keybinds
+

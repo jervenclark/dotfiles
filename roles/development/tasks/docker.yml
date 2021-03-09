@@ -1,0 +1,24 @@
+---
+# title           : docker.yml
+# description     : Task manifest for provision docker
+# author		      : Jerven Clark Chua
+# email           : jervenclark@gmail.com
+# date created    : 2021-03-09
+# date modified   : 2021-03-09
+# version         : 0.0.1
+# ansible_version : 2.10.6
+
+
+- name: Enable docker service
+  systemd:
+    name: docker
+    state: started
+    enabled: true
+  become: true
+
+- name: Add user to docker group
+  user:
+    name: jervenclark
+    groups: docker
+    append: true
+  become: true

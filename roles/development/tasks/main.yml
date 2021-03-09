@@ -1,38 +1,19 @@
-- name: Install development packages
-  community.general.pacman:
-    name:
-      - base-devel
-      - emacs
-    state: present
-  become: true
-
-- name: Check if emacs directory exists
-  stat:
-    path: /home/{{ host_username }}/.emacs.d
-  register: emacs_dir
-
-- name: Clone emacs
-  git:
-    repo: git@github.com:syl20bnr/spacemacs.git
-    version: develop
-    dest: "/home/{{ host_username }}/.emacs.d"
-    accept_hostkey: true
-  when: ! emacs_dir.stat.exists != true
-
-- name: Update emacs
-  git:
-    repo: git@github.com:syl20bnr/spacemacs.git
-    version: develop
-    dest: "/home/{{ host_username }}/.emacs.d"
-    accept_hostkey: true
-    update: true
-  when: ! emacs_dir.stat.exists
+---
+# title           : main.yml
+# description     : Main task manifest for development role
+# author		      : Jerven Clark Chua
+# email           : jervenclark@gmail.com
+# date created    : 2021-03-09
+# date modified   : 2021-03-09
+# version         : 0.0.1
+# ansible_version : 2.10.6
 
 
-- name: Copy spacemacs 
-  copy:
-    src: "../files/spacemacs"
-    dest: "/home/{{ host_username }}/.spacemacs"
-    follow: true
-  # when: ! emacs_dir.stat.exists != true
+- name: Install Development Packages
+  include_tasks: packages.yml
 
+- name: Install and Setup Emacs
+  include_tasks: emacs.yml
+
+- name: Install and Setup Docker, Docker Compose
+  include_tasks: docker.yml

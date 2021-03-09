@@ -1,0 +1,3 @@
+#+TITLE: keybinds
+# personal keybinds
+#+TAGS: personal|keybinds

@@ -10,7 +10,7 @@
 
 
 - name: Symlink i3wm config file
-  file:
+  file: &symlink_options
     state: link
     force: true
     owner: "{{ host_username }}"
@@ -36,5 +36,5 @@
     <<: *symlink_options
     src: "{{ role_path }}/files/zoneinfo/Asia/Manila"
     dest: /usr/share/zoneinfo/Asia/Manila
-    become: true
+  become: true
 
