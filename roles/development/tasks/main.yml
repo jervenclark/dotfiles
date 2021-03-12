@@ -17,3 +17,6 @@
 
 - name: Install and Setup Docker, Docker Compose
   include_tasks: docker.yml
+
+- name: Install and Setup NVM, Node, and NPM
+  include_tasks: nvm.yml

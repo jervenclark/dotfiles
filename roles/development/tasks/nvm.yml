@@ -1,0 +1,33 @@
+---
+# title           : nvm.yml
+# description     : Task manifest for provision nvm, node and npm
+# author		      : Jerven Clark Chua
+# email           : jervenclark@gmail.com
+# date created    : 2021-03-09
+# date modified   : 2021-03-09
+# version         : 0.0.1
+# ansible_version : 2.10.6
+
+
+- name: Check if NVM directory exists
+  stat:
+    path: /home/{{ host_username }}/.nvm
+  register: nvm_dir
+
+- name: Clone NVM
+  git:
+    repo: git@github.com:nvm-sh/nvm.git
+    version: master
+    dest: "/home/{{ host_username }}/.nvm"
+    accept_hostkey: true
+  when: ! nvm_dir.stat.exists != true
+
+- name: Install and set Node LTS
+  ansible.builtin.shell: |
+    source /home/{{ host_username }}/.zshrc
+    nvm install --lts
+    nvm use --lts
+  args:
+    executable: /usr/bin/zsh
+
+...
