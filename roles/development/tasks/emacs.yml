@@ -8,11 +8,23 @@
 # version         : 0.0.1
 # ansible_version : 2.10.6
 
+- name: Install emacs packages
+  community.general.pacman:
+    name:
+      - emacs
+    state: present
+  become: true
+  tags:
+    - packages
+    - emacs
 
 - name: Check if emacs directory exists
   stat:
     path: /home/{{ host_username }}/.emacs.d
   register: emacs_dir
+  tags:
+    - emacs
+    - update
 
 - name: Clone emacs
   git:
@@ -21,6 +33,8 @@
     dest: "/home/{{ host_username }}/.emacs.d"
     accept_hostkey: true
   when: ! emacs_dir.stat.exists != true
+  tags:
+    - emacs
 
 - name: Update emacs
   git:
@@ -30,6 +44,9 @@
     accept_hostkey: true
     update: true
   when: ! emacs_dir.stat.exists
+  tags:
+    - emacs
+    - update
 
 - name: Copy spacemacs 
   file: &symlink_options
@@ -39,10 +56,15 @@
     group: "{{ host_username }}"
     src: "{{ role_path }}/files/spacemacs"
     dest: "/home/{{ host_username }}/.spacemacs"
+  tags:
+    - emacs
+    - spacemacs
 
 - name: Copy spacemacs keybinds
   file:
     <<: *symlink_options
     src: "{{ role_path }}/files/spacemacs-layers/keybinds"
     dest: $HOME/.emacs.d/private/keybinds
-
+  tags:
+    - emacs
+    - spacemacs

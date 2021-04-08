@@ -14,9 +14,6 @@
     name:
       - base-devel
       - dbeaver
-      - docker
-      - docker-compose
-      - emacs
       - ncurses
       - openssl
       - python-pyopenssl

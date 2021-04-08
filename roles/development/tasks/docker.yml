@@ -8,6 +8,16 @@
 # version         : 0.0.1
 # ansible_version : 2.10.6
 
+- name: Install docker packages
+  community.general.pacman:
+    name:
+      - docker
+      - docker-compose
+    state: present
+  become: true
+  tags:
+    - packages
+    - docker
 
 - name: Enable docker service
   systemd:
@@ -15,6 +25,8 @@
     state: started
     enabled: true
   become: true
+  tags:
+    - docker
 
 - name: Add user to docker group
   user:
@@ -22,3 +34,5 @@
     groups: docker
     append: true
   become: true
+  tags:
+    - docker

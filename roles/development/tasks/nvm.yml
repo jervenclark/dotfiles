@@ -13,6 +13,9 @@
   stat:
     path: /home/{{ host_username }}/.nvm
   register: nvm_dir
+  tags:
+    - nvm
+    - update
 
 - name: Clone NVM
   git:
@@ -20,7 +23,21 @@
     version: master
     dest: "/home/{{ host_username }}/.nvm"
     accept_hostkey: true
-  when: ! nvm_dir.stat.exists != true
+  when: ! nvm_dir.stat.exists
+  tags:
+    - nvm
+
+- name: Update NVM
+  git:
+    repo: git@github.com:nvm-sh/nvm.git
+    version: master
+    dest: "/home/{{ host_username }}/.nvm"
+    accept_hostkey: true
+    update: true
+  when: nvm_dir.stat.exists
+  tags:
+    - nvm
+    - update
 
 - name: Install and set Node LTS
   ansible.builtin.shell: |

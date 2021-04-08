@@ -15,9 +15,20 @@
 
 - name: Install and Setup Emacs
   include_tasks: emacs.yml
+  tags:
+    - packages
+    - update
+    - emacs
+    - spacemacs
 
 - name: Install and Setup Docker, Docker Compose
   include_tasks: docker.yml
+  tags:
+    - packages
+    - docker
 
 - name: Install and Setup NVM, Node, and NPM
   include_tasks: nvm.yml
+  tags:
+    - nvm
+    - update
