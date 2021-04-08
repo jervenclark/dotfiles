@@ -18,6 +18,7 @@
     desktop_wallpaper: "3508x2480-alien-vs-predator.png"
 
   roles:
+    - kewlfft.aur
     - base
     - development
 

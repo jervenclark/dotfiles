@@ -8,9 +8,10 @@
 # version         : 0.0.1
 # ansible_version : 2.10.6
 
-
 - name: Install Development Packages
   include_tasks: packages.yml
+  tags:
+    - packages
 
 - name: Install and Setup Emacs
   include_tasks: emacs.yml

@@ -55,8 +55,10 @@ This function should only modify configuration layer settings."
      docker
      emacs-lisp
      git
+     gtags
      helm
      html
+     (ibuffer :variables ibuffer-group-buffers-by 'projects)
      keybinds
      javascript
      lsp
@@ -72,6 +74,7 @@ This function should only modify configuration layer settings."
      syntax-checking
      version-control
      sql
+     tabs
      theming
      treemacs
      typescript
@@ -535,6 +538,7 @@ This function defines the environment variables for your Emacs session. By
 default it calls `spacemacs/load-spacemacs-env' which loads the environment
 variables declared in `~/.spacemacs.env' or `~/.spacemacs.d/.spacemacs.env'.
 See the header of this file for more information."
+
   (spacemacs/load-spacemacs-env)
   (setq-default
    theming-modifications
@@ -628,6 +632,8 @@ before packages are loaded."
   (setq exec-path
         (append exec-path '("/home/jervenclark/.nvm/versions/node/v14.16.0/bin")))
   )
+
+
 
 ;; Do not write anything past this comment. This is where Emacs will
 ;; auto-generate custom variable definitions.

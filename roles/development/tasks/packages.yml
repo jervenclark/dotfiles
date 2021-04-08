@@ -24,3 +24,14 @@
       - sqlite
     state: present
   become: true
+  tags:
+    - packages
+
+- name: Install yay development packages
+  aur:
+    use: yay
+    name:
+      - global
+  become: true
+  tags:
+    - packages
