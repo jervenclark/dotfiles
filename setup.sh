@@ -1,11 +1,11 @@
 #!/bin/zsh
 # title           : setup.sh
 # description     : Initial setup
-# author		      : Jerven Clark Chua
+# author          : Jerven Clark Chua
 # email           : jervenclark@gmail.com
 # date            : 2020-07-17
 # version         : 0.0.1
-# usage		        : ./setup.sh
+# usage           : ./setup.sh
 # notes           :
 # zsh_version     : 5.8
 #===============================================================================

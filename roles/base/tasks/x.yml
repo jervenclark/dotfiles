@@ -1,7 +1,7 @@
 ---
 # title           : x.yml
 # description     : Task manifest for provisioning X, Xresources
-# author		      : Jerven Clark Chua
+# author          : Jerven Clark Chua
 # email           : jervenclark@gmail.com
 # date created    : 2021-03-08
 # date modified   : 2021-03-09

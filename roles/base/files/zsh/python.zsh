@@ -1,11 +1,11 @@
 #!/bin/zsh
 # title           : python.zsh
 # description     : Custom functions, aliases, and variables related to python
-# author		      : Jerven Clark Chua
+# author          : Jerven Clark Chua
 # email           : jervenclark@gmail.com
 # date            : 2020-07-17
 # version         : 0.0.1
-# usage		        : source python.zsh
+# usage           : source python.zsh
 # notes           :
 # zsh_version     : 5.8
 #===============================================================================

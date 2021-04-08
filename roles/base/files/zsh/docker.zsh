@@ -1,11 +1,11 @@
 #!/bin/zsh
 # title           : docker.zsh
 # description     : Custom docker aliases and overrides
-# author		      : Jerven Clark Chua
+# author          : Jerven Clark Chua
 # email           : jervenclark@gmail.com
 # date            : 2020-07-17
 # version         : 0.0.1
-# usage		        : source docker.zsh
+# usage           : source docker.zsh
 # notes           :
 # zsh_version     : 5.8
 #===============================================================================

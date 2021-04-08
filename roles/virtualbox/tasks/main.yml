@@ -1,7 +1,7 @@
 ---
 # title           : packages.yml
 # description     : Task manifest for provisioning development packages
-# author		      : Jerven Clark Chua
+# author          : Jerven Clark Chua
 # email           : jervenclark@gmail.com
 # date created    : 2021-03-09
 # date modified   : 2021-03-09

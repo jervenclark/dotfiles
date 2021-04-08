@@ -1,7 +1,7 @@
 ---
 # title           : provision-virtualbox-guest.yml
 # description     : Provision virtualbox guest
-# author		      : Jerven Clark Chua
+# author          : Jerven Clark Chua
 # email           : jervenclark@gmail.com
 # date created    : 2020-07-17
 # date modified   : 2021-03-09

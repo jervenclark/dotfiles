@@ -1,11 +1,11 @@
 #!/bin/zsh
 # title           : overrides.zsh
 # description     : Overrides for built-in linux commands
-# author		      : Jerven Clark Chua
+# author          : Jerven Clark Chua
 # email           : jervenclark@gmail.com
 # date            : 2020-07-17
 # version         : 0.0.1
-# usage		        : source overrides.zsh
+# usage           : source overrides.zsh
 # notes           :
 # zsh_version     : 5.8
 #===============================================================================

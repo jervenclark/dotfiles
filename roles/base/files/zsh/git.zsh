@@ -1,11 +1,11 @@
 #!/bin/zsh
 # title           : git.zsh
 # description     : Custom git functions and aliases
-# author		      : Jerven Clark Chua
+# author          : Jerven Clark Chua
 # email           : jervenclark@gmail.com
 # date            : 2020-07-17
 # version         : 0.0.1
-# usage		        : source git.zsh
+# usage           : source git.zsh
 # notes           :
 # zsh_version     : 5.8
 #===============================================================================

@@ -1,7 +1,7 @@
 ---
 # title           : docker.yml
 # description     : Task manifest for provision docker
-# author		      : Jerven Clark Chua
+# author          : Jerven Clark Chua
 # email           : jervenclark@gmail.com
 # date created    : 2021-03-09
 # date modified   : 2021-03-09
@@ -30,7 +30,7 @@
 
 - name: Add user to docker group
   user:
-    name: jervenclark
+    name: "{{host_username}}"
     groups: docker
     append: true
   become: true
