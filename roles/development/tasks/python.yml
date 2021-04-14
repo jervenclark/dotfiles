@@ -1,0 +1,17 @@
+---
+# title           : python.yml
+# description     : Task manifest for provisioning python
+# author          : Jerven Clark Chua
+# email           : jervenclark@gmail.com
+# date created    : 2021-03-09
+# date modified   : 2021-03-09
+# version         : 0.0.1
+# ansible_version : 2.10.6
+
+- name: Install pyenv
+  ansible.builtin.shell: |
+    source /home/{{ host_username }}/.zshrc
+    curl https://pyenv.run | zsh
+  args:
+    executable: /usr/bin/zsh
+...
