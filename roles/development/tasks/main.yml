@@ -32,3 +32,14 @@
   tags:
     - nvm
     - update
+
+- name: Install and Setup Python
+  include_tasks: python.yml
+  tags:
+    - python
+
+- name: Install and Setup PHP
+  include_tasks: php.yml
+  tags:
+    - php
+

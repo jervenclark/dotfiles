@@ -14,4 +14,6 @@
     curl https://pyenv.run | zsh
   args:
     executable: /usr/bin/zsh
+  tags:
+    - python
 ...

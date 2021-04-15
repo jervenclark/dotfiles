@@ -1,0 +1,22 @@
+---
+# title           : php.yml
+# description     : Task manifest for provisioning php
+# author          : Jerven Clark Chua
+# email           : jervenclark@gmail.com
+# date created    : 2021-03-09
+# date modified   : 2021-03-09
+# version         : 0.0.1
+# ansible_version : 2.10.6
+
+- name: Install composer
+  ansible.builtin.shell: |
+    cd /home/{{ host_username }}
+    source /home/{{ host_username }}/.zshrc
+    /usr/bin/wget https://raw.githubusercontent.com/composer/getcomposer.org/95d11ed947f602b5a5f83f80c062e134d62c9f4b/web/installer -O - -q | php -- --quiet
+    mv composer.phar /usr/bin/composer
+  args:
+    executable: /usr/bin/zsh
+  become: true
+  tags:
+    - php
+...
