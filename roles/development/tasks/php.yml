@@ -14,6 +14,13 @@
     source /home/{{ host_username }}/.zshrc
     /usr/bin/wget https://raw.githubusercontent.com/composer/getcomposer.org/95d11ed947f602b5a5f83f80c062e134d62c9f4b/web/installer -O - -q | php -- --quiet
     mv composer.phar /usr/bin/composer
+    composer global require "squizlabs/php_codesniffer=*"
+    mkdir /home/{{ host_username }}/.rulesets
+    cd /home/{{ host_username }}/.rulesets
+    git clone -b master https://github.com/WordPress/WordPress-Coding-Standards.git wpcs
+    git clone git@github.com:PHPCompatibility/PHPCompatibility.git compatibility
+    git clone git@github.com:PHPCSStandards/PHPCSUtils.git utils
+    phpcs --config-set installed_paths $PWD/wpcs,$PWD/utils,$PWD/compatibility
   args:
     executable: /usr/bin/zsh
   become: true
