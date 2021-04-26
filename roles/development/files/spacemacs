@@ -52,6 +52,7 @@ This function should only modify configuration layer settings."
                       auto-completion-use-company-box nil)
      better-defaults
      colors
+     django
      docker
      emacs-lisp
      git
@@ -67,6 +68,12 @@ This function should only modify configuration layer settings."
      nginx
      org
      (php)
+     (python :variables
+             python-formatter 'yapf
+             python-format-on-save t
+             python-sort-imports-on-save t)
+
+     rust
      ;; spell-checking
      (shell :variables
             shell-default-shell 'term
@@ -78,7 +85,10 @@ This function should only modify configuration layer settings."
      sql
      ;; tabs
      theming
-     treemacs
+     (treemacs :variables
+               treemacs-use-filewatch-mode t
+               treemacs-use-git-mode 'simple
+               treemacs-lock-width t)
      typescript
      ;; version-control
      yaml
