@@ -40,3 +40,4 @@ configure-virtualenv() {
 #-------------------------------------------------------------------------------
 # build python package
 alias pyb='python setup.py sdist bdist_wheel'
+alias py='python'

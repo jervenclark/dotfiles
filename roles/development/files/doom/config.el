@@ -25,7 +25,7 @@
 ;; There are two ways to load a theme. Both assume the theme is installed and
 ;; available. You can either set `doom-theme' or manually load a theme with the
 ;; `load-theme' function. This is the default:
-(setq doom-theme 'doom-one)
+(setq doom-theme 'doom-city-lights)
 
 ;; If you use `org' and don't want your org files in the default location below,
 ;; change `org-directory'. It must be set before org loads!
@@ -55,7 +55,37 @@
 (use-package windmove
   :ensure nil
   :bind
-  (("S-<left>". windmove-left)
-   ("S-<right>". windmove-right)
-   ("S-<up>". windmove-up)
-   ("S-<down>". windmove-down)))
+  (("C-S-<left>". windmove-left)
+   ("C-S-<right>". windmove-right)
+   ("C-S-<up>". windmove-up)
+   ("C-S-<down>". windmove-down)))
+
+(map! :leader
+      (:prefix-map ("a" . "personal")
+
+       ;; Multicursor keybinds
+       (:prefix ("m" . "multicursor")
+        :desc "mark all like this" "l" #'mc/mark-all-like-this-dwim
+        :desc "mark all in function" "f" #'mc/mark-all-like-this-in-defun
+
+        :desc "mark next like this" "n" #'mc/mark-next-like-this
+        :desc "mark prev like this" "p" #'mc/mark-previous-like-this
+
+        :desc "edit lines" "e" #'mc/edit-lines
+        :desc "edit beginning of lines" "a" #'mc/edit-beginnings-of-lines
+        :desc "edit ends of lines" "z" #'mc/edit-ends-of-lines)
+
+       ;; Misc
+       (:prefix ("e" . "editing")
+        :desc "align regexp" "a" #'align-regexp
+        :desc "sort lines" "s" #'sort-lines
+        :desc "replace string" "r" #'replace-string)
+
+       ;; Navigation
+       (:prefix ("n" . "navigation")
+        :desc "move up" "<up>" #'windmove-up
+        :desc "move down" "<down>" #'windmove-down
+        :desc "move left" "<left>" #'windmove-left
+        :desc "move right" "<right>" #'windmove-right)
+
+       ))
