@@ -98,3 +98,5 @@ alias i3cheatsheet="catl $HOME/.i3/cheatsheet.org"
 alias update-spacemacs="/usr/bin/emacs --batch -l ~/.emacs.d/init.el --eval='(configuration-layer/update-packages t)'"
 
 alias screenlayout-single="$HOME/.screenlayout/screenlayout-single.sh"
+
+alias doom="$HOME/.emacs.d/bin/doom"
