@@ -28,7 +28,7 @@
 
 - name: Clone emacs
   git:
-    repo: git@github.com:syl20bnr/spacemacs.git
+    repo: git@github.com:hlissner/doom-emacs.git
     version: develop
     dest: "/home/{{ host_username }}/.emacs.d"
     accept_hostkey: true
@@ -38,7 +38,7 @@
 
 - name: Update emacs
   git:
-    repo: git@github.com:syl20bnr/spacemacs.git
+    repo: git@github.com:hlissner/doom-emacs.git
     version: develop
     dest: "/home/{{ host_username }}/.emacs.d"
     accept_hostkey: true
@@ -48,23 +48,23 @@
     - emacs
     - update
 
-- name: Copy spacemacs 
+- name: Copy doom 
   file: &symlink_options
     state: link
     force: true
     owner: "{{ host_username }}"
     group: "{{ host_username }}"
-    src: "{{ role_path }}/files/spacemacs"
-    dest: "/home/{{ host_username }}/.spacemacs"
+    src: "{{ role_path }}/files/doom"
+    dest: "/home/{{ host_username }}/.doom.d"
   tags:
     - emacs
-    - spacemacs
+    - doom
 
-- name: Copy spacemacs keybinds
-  file:
-    <<: *symlink_options
-    src: "{{ role_path }}/files/spacemacs-layers/keybinds"
-    dest: $HOME/.emacs.d/private/keybinds
-  tags:
-    - emacs
-    - spacemacs
+#- name: Copy spacemacs keybinds
+#  file:
+#    <<: *symlink_options
+#    src: "{{ role_path }}/files/spacemacs-layers/keybinds"
+#    dest: $HOME/.emacs.d/private/keybinds
+#  tags:
+#    - emacs
+#    - spacemacs

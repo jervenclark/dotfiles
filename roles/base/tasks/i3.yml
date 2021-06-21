@@ -27,7 +27,7 @@
 
 - name: Create screenshot directory
   ansible.builtin.file:
-    path: $HOME/Prictures/Screenshots
+    path: $HOME/Pictures/Screenshots
     state: directory
     mode: '0755'
 

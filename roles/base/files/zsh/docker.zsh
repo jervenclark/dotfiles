@@ -56,4 +56,4 @@ alias dcd='docker-compose down'
 alias dcs='docker-compose stop'
 
 # dockerized django
-alias dcj='docker-compose exec -Tu 1000 web python manage.py'
+alias dcj='docker-compose exec -u 1000 web python manage.py'

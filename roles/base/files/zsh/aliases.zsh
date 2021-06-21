@@ -100,3 +100,5 @@ alias update-spacemacs="/usr/bin/emacs --batch -l ~/.emacs.d/init.el --eval='(co
 alias screenlayout-single="$HOME/.screenlayout/screenlayout-single.sh"
 
 alias doom="$HOME/.emacs.d/bin/doom"
+
+alias editor="PYTHONPATH=./ /usr/bin/emacs &"

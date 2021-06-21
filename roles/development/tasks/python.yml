@@ -8,12 +8,14 @@
 # version         : 0.0.1
 # ansible_version : 2.10.6
 
-- name: Install pyenv
-  ansible.builtin.shell: |
-    source /home/{{ host_username }}/.zshrc
-    curl https://pyenv.run | zsh
-  args:
-    executable: /usr/bin/zsh
+- name: Install python packages
+  community.general.pacman:
+    name:
+      - python-poetry
+    state: present
+  become: true
   tags:
-    - python
+    - emacs
+    - update
+
 ...

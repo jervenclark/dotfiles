@@ -29,8 +29,8 @@
       - bmon
       - brave
       - bzip2
-      - calibre
-      - clementine
+#      - calibre
+#      - clementine
       - curl
       - diff-so-fancy
       - exa
@@ -47,6 +47,7 @@
       - pulseaudio
       - pv
       - python-pip
+      - ripgrep
       - rofi
       - rofi-calc
       - texlive-most

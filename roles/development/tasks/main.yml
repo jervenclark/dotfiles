@@ -27,11 +27,11 @@
     - packages
     - docker
 
-- name: Install and Setup NVM, Node, and NPM
-  include_tasks: nvm.yml
-  tags:
-    - nvm
-    - update
+#- name: Install and Setup NVM, Node, and NPM
+#  include_tasks: nvm.yml
+#  tags:
+#    - nvm
+#    - update
 
 - name: Install and Setup Python
   include_tasks: python.yml
