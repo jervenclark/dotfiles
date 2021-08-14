@@ -15,7 +15,17 @@
     state: present
   become: true
   tags:
-    - emacs
-    - update
+    - python
+    - packages
 
+- name: Add poetry autocomplete
+  ansible.builtin.shell: |
+    source ~/.zshrc
+    mkdir $ZSH_CUSTOM/plugins/poetry
+    poetry completions zsh > $ZSH_CUSTOM/plugins/poetry/_poetry
+  args:
+    executable: /usr/bin/zsh
+  tags:
+    - python
+    - poetry
 ...

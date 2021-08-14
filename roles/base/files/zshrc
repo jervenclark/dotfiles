@@ -34,6 +34,7 @@ export PATH=$PATH:$ANDROID_HOME/tools:$ANDROID_HOME/tools/bin
 # Setup ZSH + Oh My ZSH
 #-------------------------------------------------------------------------------
 export ZSH=$HOME/.ohmyzsh
+export ZSH_CUSTOM=$HOME/.ohmyzsh/custom
 
 # configure zsh
 CASE_SENSITIVE="true"

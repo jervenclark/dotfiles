@@ -19,6 +19,7 @@
       - python-pyopenssl
       - readline
       - sqlite
+      - yay
     state: present
   become: true
   tags:
