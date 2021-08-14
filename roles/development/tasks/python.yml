@@ -12,6 +12,7 @@
   community.general.pacman:
     name:
       - python-poetry
+      - pyenv
     state: present
   become: true
   tags:
@@ -28,4 +29,15 @@
   tags:
     - python
     - poetry
+
+- name: Add pyenv global python version
+  ansible.builtin.shell: |
+    source ~/.zshrc
+    pyenv install 3.9.6
+    pyenv global 3.9.6
+  args:
+    executable: /usr/bin/zsh
+  tags:
+    - python
+    - pyenv
 ...
