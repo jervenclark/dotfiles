@@ -128,3 +128,4 @@ ttyctl -f
 
 typeset -g POWERLEVEL9K_INSTANT_PROMPT=quiet
 eval "$(pyenv init -)"
+export PYENV_VERSION="3.9.6"
