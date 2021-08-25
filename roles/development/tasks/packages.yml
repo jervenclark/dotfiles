@@ -20,16 +20,27 @@
       - readline
       - sqlite
       - yay
+      - aws-cli
+      - tor
+      - torbrowser-launcher
+      - geckodriver
+      - python-pre-commit
     state: present
   become: true
   tags:
     - packages
 
+- name: Enable tor service
+  ansible.builtin.systemd:
+    name: tor
+    state: started
+    enabled: true
+
 - name: Install yay development packages
   aur:
     use: yay
     name:
+      - aws-session-manager-plugin
       - global
-  become: true
   tags:
     - packages
