@@ -57,3 +57,5 @@ alias dcs='docker-compose stop'
 
 # dockerized django
 alias dcj='docker-compose exec -u 1000 web python manage.py'
+
+alias dcjs='docker-compose exec -u 1000 web python manage.py shell_plus'
