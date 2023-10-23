@@ -129,3 +129,17 @@ ttyctl -f
 typeset -g POWERLEVEL9K_INSTANT_PROMPT=quiet
 eval "$(pyenv init -)"
 export PYENV_VERSION="3.9.6"
+
+# alias zz=". ./.venv/bin/activate"
+
+python_venv() {
+  MYVENV=./.venv
+  # when you cd into a folder that contains $MYVENV
+  [[ -d $MYVENV ]] && source $MYVENV/bin/activate > /dev/null 2>&1
+  # when you cd into a folder that doesn't
+  [[ ! -d $MYVENV ]] && deactivate > /dev/null 2>&1
+}
+
+autoload -U add-zsh-hook
+add-zsh-hook chpwd python_venv
+python_venv
